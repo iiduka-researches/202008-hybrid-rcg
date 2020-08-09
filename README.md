@@ -10,7 +10,7 @@ All numerical examples presented in the paper are used this implementation.
 Our implementation is the modification of `pymanopt.solver.ConjugateGradient`.
 
 ## Experiments
-The experiments follow the experiments in [pymanopt](https://github.com/pymanopt/pymanopt/tree/master/examples).
+The experiments follow the examples of [pymanopt](https://github.com/pymanopt/pymanopt/tree/master/examples).
 
 # Acknowledgements
 This work was supported by JSPS KAKENHI Grant Number JP18K11184.
