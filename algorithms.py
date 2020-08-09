@@ -157,7 +157,6 @@ class ConjugateGradient(Solver):
             if abs(orth_grads) >= self._orth_value:
                 beta = 0
                 desc_dir = -Pnewgrad
-                print('Modified')
             else:
                 desc_dir = man.transp(x, newx, desc_dir)
                 if self._beta_type == BetaTypes.DaiYuan:
@@ -184,14 +183,11 @@ class ConjugateGradient(Solver):
                         beta_HS = ip_diff / man.inner(newx, diff, desc_dir)
                     except ZeroDivisionError:
                         beta_HS = 1
-                    c2 = 0.9
+                    c2 = linesearch.c2
                     beta = max(-(1 - c2) / (1 + c2) * beta_DY, min(beta_DY, beta_HS))
                 else:
-                    types = ", ".join(
-                        ["BetaTypes.%s" % t for t in BetaTypes._fields])
-                    raise ValueError(
-                        "Unknown beta_type %s. Should be one of %s." % (
-                            self._beta_type, types))
+                    types = ", ".join(["BetaTypes.%s" % t for t in BetaTypes._fields])
+                    raise ValueError("Unknown beta_type %s. Should be one of %s." % (self._beta_type, types))
 
                 desc_dir = -Pnewgrad + beta * desc_dir
 
@@ -209,8 +205,9 @@ class ConjugateGradient(Solver):
 
 
 class LineSearchWolfe:
-    def __init__(self):
-        pass
+    def __init__(self, c1: float=1e-4, c2: float=0.9):
+        self.c1 = c1
+        self.c2 = c2
 
     def __str__(self):
         return 'Wolfe'
@@ -245,7 +242,7 @@ class LineSearchWolfe:
         gfk = gradient(x)
         derphi0 = man.inner(x, gfk, d)
 
-        stepsize = _scalar_search_wolfe(phi, derphi, 1e-4, 0.9, maxiter=100)
+        stepsize = _scalar_search_wolfe(phi, derphi, self.c1, self.c2, maxiter=100)
         if stepsize is None:
             stepsize = 1e-6
         
@@ -254,7 +251,7 @@ class LineSearchWolfe:
         return stepsize, newx
 
 
-def _scalar_search_wolfe(phi, derphi, c1=1e-4, c2=0.9, maxiter=10):
+def _scalar_search_wolfe(phi, derphi, c1=1e-4, c2=0.9, maxiter=100):
     phi0 = phi(0.)
     derphi0 = derphi(0.)
     alpha0 = 0
