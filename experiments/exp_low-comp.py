@@ -1,5 +1,6 @@
 import os
 import csv
+import random
 import autograd.numpy as np
 from numpy import linalg as la, random as rnd
 
@@ -31,13 +32,10 @@ if __name__ == "__main__":
     
     for i in range(n_exp):
         matrix = rnd.randn(m, n)
-        P_omega = rnd.rand(m, n)
+        P_omega = np.zeros_like(matrix)
         for j in range(m):
             for k in range(n):
-                if P_omega[j][k] < p:
-                    P_omega[j][k] = 0.
-                else:
-                    P_omega[j][k] = 1.
+                P_omega[j][k] = random.choice([0, 1])
 
         cost = create_cost(matrix, P_omega)
         manifold = FixedRankEmbedded(m, n, rank)
