@@ -13,7 +13,7 @@ from algorithms import ConjugateGradient, BetaTypes
 def create_cost(A):
     @pymanopt.function.Autograd
     def cost(x):
-        return 0.1 * np.inner(x, A @ x)
+        return np.inner(x, A @ x)
 
     return cost
 
