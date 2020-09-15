@@ -12,9 +12,9 @@ Our implementation is the modification of `pymanopt.solver.ConjugateGradient`.
 ## Experiments
 The experiments follow the examples of [pymanopt](https://github.com/pymanopt/pymanopt/tree/master/examples).
 
-# Acknowledgements
+## Acknowledgements
 This work was supported by JSPS KAKENHI Grant Number JP18K11184.
 
-# Authors
+## Authors
   * Hiroyuki SAKAI
   * [Hideaki IIDUKA](https://iiduka.net)
