@@ -2,9 +2,8 @@
 
 This repository provides a solver of [pymanopt](https://github.com/pymanopt/pymanopt),
 which is an implementation of the Hybrid Riemannian conjugate gradient method.
-This implementation is based on the treatise,
 
-> H. Sakai, H. Iiduka: Hybrid Riemannian Conjugate Gradient Methods with Global ConvergenceProperties, (submitted)
+> Sakai, H., Iiduka, H. Hybrid Riemannian conjugate gradient methods with global convergence properties. Comput Optim Appl 77, 811–830 (2020). https://doi.org/10.1007/s10589-020-00224-9
 
 All numerical examples presented in the paper are used this implementation.
 Our implementation is the modification of `pymanopt.solver.ConjugateGradient`.
