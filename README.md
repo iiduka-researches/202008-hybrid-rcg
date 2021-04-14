@@ -15,5 +15,5 @@ The experiments follow the examples of [pymanopt](https://github.com/pymanopt/py
 This work was supported by JSPS KAKENHI Grant Number JP18K11184.
 
 ## Authors
-  * Hiroyuki SAKAI
+  * [Hiroyuki SAKAI](https://orcid.org/my-orcid)
   * [Hideaki IIDUKA](https://iiduka.net)
